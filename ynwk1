@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation</title>
+<style>
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation</title>
+<style>
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation</title>
+<style>
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation</title>
+<style>
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+<script>
+  // Get canvas context
+  const canvas = document.querySelector('canvas');
+  const ctx = canvas.getContext('2d');
+
+  // Character objects
+  const tallinn = {
+    x: 50,
+    y: canvas.height / 2,
+    expression: "irritated"
+  };
+
+  const guy1 = {
+    x: -100,
+    y: canvas.height / 2 + 50,
+    expression: "walking"
+  };
+
+  const guys = [
+    { x: -100, y: canvas.height / 2 + 100, expression: "walking" },
+    { x: -100, y: canvas.height / 2 + 150, expression: "walking" },
+    { x: canvas.width + 100, y: canvas.height / 2 + 50, expression: "walking" },
+    { x: canvas.width + 100, y: canvas.height / 2 + 100, expression: "walking" }
+  ];
+
+  const miguen = {
+    x: canvas.width / 2,
+    y: -100,
+    expression: "falling"
+  };
+
+  // Draw function
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw characters
+    drawCharacter(tallinn);
+    drawCharacter(guy1);
+    guys.forEach(guy => drawCharacter(guy));
+    drawCharacter(miguen);
+
+    // Animate characters
+    tallinn.x += 1;
+    guy1.x += 1;
+    guys.forEach(guy => guy.x += 1);
+    miguen.y += 2;
+
+    // Request animation frame
+    requestAnimationFrame(draw);
+  }
+
+  // Draw character function
+  function drawCharacter(character) {
+    // Draw character image based on expression
+    // You can use spritesheets or other methods for better graphics
+    ctx.fillStyle = "white";
+    ctx.fillRect(character.x, character.y, 50, 50);
+    ctx.fillStyle = "black";
+    ctx.font = "12px Arial";
+    ctx.fillText(character.expression, character.x, character.y - 10);
+  }
+
+  // Start animation
+  draw();
+</script>
